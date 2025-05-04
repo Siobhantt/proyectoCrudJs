@@ -1,6 +1,9 @@
 let albumes =[];
 let desplegado;
+
+//Esto es un evento
 document.querySelector(".mas").addEventListener("click",mas);
+document.querySelector(".ampliacion").addEventListener("click",cerrar);
 
 function mas(){
     const nombre = document.querySelector("#album").value.trim();
@@ -79,7 +82,7 @@ function enviar(){
 
 function codigoHTML(dato){
         document.querySelector(".imagenes").insertAdjacentHTML("beforeend",`
-            <div class="imagen">
+            <div class="imagen"
                 onmouseover="mostrar(this)"
                 onmouseout="ocultar(this)"
                 onclick="ampliar('${dato}')" alt=""/>
@@ -88,4 +91,28 @@ function codigoHTML(dato){
                 
             </div>
             `)
+}
+
+function mostrar(yo){
+    if( yo.querySelector(".papelera").style.display==="block"){
+        yo.querySelector(".papelera").style.display="none";
+    }else{
+        yo.querySelector(".papelera").style.display="block";
+    }
+        
+}
+
+function ampliar(miImagen){
+        document.querySelector(".ampliacion").style.display="block";
+        document.querySelector(".imagenGrande").innerHTML=`
+        <img src="${miImagen}"/>
+        `;
+}
+
+function cerrar(){
+    this.style.display="none";
+}
+
+function eliminarImagen(yo, miImagen,e){
+    
 }
